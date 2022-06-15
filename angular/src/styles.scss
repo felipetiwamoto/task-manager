@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+@import "./theme";
+@import "./mixin";
+@import "./helper";
+
+// COMPONENT
+@import "./app/component/container/container.component.scss";
+
+* {
+	margin: 0px;
+	padding: 0px;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+
+// * > * {
+// 	border: 1px solid red;
+// }
+
+input,
+select,
+textarea {
+	@include title(14px, 300);
+}
+
+body {
+	max-width: 100%;
+	min-height: 100%;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+	@include text(14px, 300);
+}
+
+.page {
+	position: relative;
+	@include flex(initial, initial, column);
+
+	&:after {
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: 0px;
+		right: 0px;
+		border-left: 100vh solid transparent;
+		border-top: 100vh solid transparent;
+		border-right: 100vw solid $greyf9;
+	}
+	&__bg {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		overflow: hidden;
+
+		@keyframes rotate {
+			to {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes float {
+			0% {
+				opacity: 1;
+				transform: translateY(0vh);
+			}
+			50% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+				transform: translateY(-120vh) rotate(360deg);
+			}
+		}
+		&__item {
+			border-radius: 15px;
+			position: absolute;
+			bottom: -25vh;
+			--duration: 0;
+
+			&:nth-of-type(1) {
+				right: 100px;
+				animation: float 9s 0.1s infinite linear;
+			}
+			&:nth-of-type(2) {
+				right: 20px;
+				animation: float 8s 3s infinite linear;
+			}
+			&:nth-of-type(3) {
+				right: 20vw;
+				animation: float 10s 8s infinite linear;
+			}
+			&:nth-of-type(4) {
+				left: 70px;
+				animation: float 11s 1s infinite linear;
+			}
+			&:nth-of-type(5) {
+				left: 20vw;
+				animation: float 13s 6s infinite linear;
+			}
+			&.sm {
+				width: 100px;
+				height: 100px;
+			}
+			&.md {
+				width: 200px;
+				height: 200px;
+			}
+		}
+	}
+	&__header {
+	}
+	&__body {
+		flex-grow: 1;
+		min-height: 100vh;
+		position: relative;
+		z-index: 1;
+		@include flex(flex-start, center);
+	}
+}
+
+.content {
+	margin-top: 50px;
+	width: 100%;
+
+	&__container {
+	}
+	&__title {
+		display: block;
+		text-align: center;
+		margin-bottom: 30px;
+		@include title(38px, 700);
+	}
+	&__box {
+		padding: 15px 15px 230px 15px;
+		max-width: 100%;
+		overflow: auto;
+		margin-inline: auto;
+		max-height: 500px;
+		border-radius: 15px;
+		box-shadow: 0px 23px 50px adjust-color($color: $grey0, $alpha: -0.85);
+		background-color: $greyf;
+
+		@include md {
+			padding: 35px 35px 150px 35px;
+			width: 500px;
+		}
+
+		&::-webkit-scrollbar {
+			width: 0px;
+		}
+	}
+}

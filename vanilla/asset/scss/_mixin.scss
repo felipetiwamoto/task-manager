@@ -1,0 +1,110 @@
+@mixin title($size: initial, $weight: initial, $style: intiial, $spacing: initial, $height: initial) {
+	font-family: "Roboto", sans-serif;
+	font-size: $size;
+	font-weight: $weight;
+	font-style: $style;
+	letter-spacing: $spacing;
+	line-height: $height;
+}
+
+@mixin text($size: initial, $weight: initial, $style: intiial, $spacing: initial, $height: initial) {
+	font-family: "Open Sans", sans-serif;
+	font-size: $size;
+	font-weight: $weight;
+	font-style: $style;
+	letter-spacing: $spacing;
+	line-height: $height;
+}
+
+@mixin roboto($size: initial, $weight: initial, $style: intiial, $spacing: initial, $height: initial) {
+	font-family: "Roboto", sans-serif;
+	font-size: $size;
+	font-weight: $weight;
+	font-style: $style;
+	letter-spacing: $spacing;
+	line-height: $height;
+}
+
+@mixin openSans($size: initial, $weight: initial, $style: intiial, $spacing: initial, $height: initial) {
+	font-family: "Open Sans", sans-serif;
+	font-size: $size;
+	font-weight: $weight;
+	font-style: $style;
+	letter-spacing: $spacing;
+	line-height: $height;
+}
+
+@mixin flex($align: initial, $justify: initial, $direction: initial) {
+	display: flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-direction: $direction;
+}
+
+@mixin inlineFlex($align: initial, $justify: initial, $direction: initial) {
+	display: inline-flex;
+	align-items: $align;
+	justify-content: $justify;
+	flex-direction: $direction;
+}
+
+@mixin row($gap: -15px) {
+	display: flex;
+	flex-wrap: wrap;
+	margin-inline: $gap;
+}
+
+@mixin column($size: 100%, $gap: 15px) {
+	box-sizing: border-box;
+	max-width: $size;
+	flex-basis: $size;
+	padding-inline: $gap;
+}
+
+@mixin xs {
+	@media all and (max-width: 576px) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media all and (min-width: 576px) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media all and (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin lg {
+	@media all and (min-width: 992px) {
+		@content;
+	}
+}
+
+@mixin xl {
+	@media all and (min-width: 1200px) {
+		@content;
+	}
+}
+
+@mixin xxl {
+	@media all and (min-width: 1400px) {
+		@content;
+	}
+}
+
+@mixin maxMedia($breakpoint) {
+	@media all and (max-width: $breakpoint) {
+		@content;
+	}
+}
+
+@mixin minMedia($breakpoint) {
+	@media all and (min-width: $breakpoint) {
+		@content;
+	}
+}

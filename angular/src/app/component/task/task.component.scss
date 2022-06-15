@@ -1,0 +1,383 @@
+@import "./../../../theme";
+@import "./../../../mixin";
+@import "./../../../helper";
+
+.task {
+	margin-bottom: 15px;
+	@include flex(center);
+
+	&__left {
+		width: 55px;
+		position: relative;
+
+		&:hover .task__tag {
+			opacity: 1;
+			visibility: visible;
+			overflow: initial;
+		}
+	}
+	&__tag__selected {
+		display: block;
+		width: 40px;
+		height: 40px;
+		border-radius: 5px;
+	}
+	&__tag {
+		padding: 9px 0px;
+		opacity: 0;
+		visibility: hidden;
+		width: 200px;
+		overflow: auto;
+		position: absolute;
+		z-index: 1;
+		top: 40px;
+		left: 20px;
+		border-radius: 0px 10px 10px 10px;
+		box-shadow: 0px 4px 4px adjust-color($color: $grey0, $alpha: -0.85);
+		background-color: $greyf;
+		@include row(-5px);
+
+		&:before {
+			content: "";
+			width: 0px;
+			height: 0px;
+			display: block;
+			border: none;
+			top: -19px;
+			position: absolute;
+			z-index: -1;
+			border-left: 15px solid $greyf;
+			border-right: 15px solid transparent;
+			border-top: 20px solid transparent;
+		}
+	}
+	&__tag__item {
+		cursor: pointer;
+		@include column(20%, 5px);
+
+		&:before {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 15px;
+			border-radius: 5px;
+			box-shadow: 0px 4px 4px adjust-color($color: $grey0, $alpha: -0.85);
+			background-color: transparent;
+			margin-bottom: 10px;
+		}
+
+		&.red:before {
+			background-color: $red;
+		}
+		&.green:before {
+			background-color: $green;
+		}
+		&.blue:before {
+			background-color: $blue;
+		}
+		&.yellow:before {
+			background-color: $yellow;
+		}
+		&.orange:before {
+			background-color: $orange;
+		}
+		&.black:before {
+			background-color: $black;
+		}
+		&.white:before {
+			background-color: $white;
+		}
+		&.grey0:before {
+			background-color: $grey0;
+		}
+		&.grey1:before {
+			background-color: $grey1;
+		}
+		&.grey2:before {
+			background-color: $grey2;
+		}
+		&.grey3:before {
+			background-color: $grey3;
+		}
+		&.grey4:before {
+			background-color: $grey4;
+		}
+		&.grey5:before {
+			background-color: $grey5;
+		}
+		&.grey6:before {
+			background-color: $grey6;
+		}
+		&.grey7:before {
+			background-color: $grey7;
+		}
+		&.grey8:before {
+			background-color: $grey8;
+		}
+		&.grey9:before {
+			background-color: $grey9;
+		}
+		&.greya:before {
+			background-color: $greya;
+		}
+		&.greyb:before {
+			background-color: $greyb;
+		}
+		&.greyc:before {
+			background-color: $greyc;
+		}
+		&.greyd:before {
+			background-color: $greyd;
+		}
+		&.greye:before {
+			background-color: $greye;
+		}
+		&.greyf:before {
+			background-color: $greyf;
+		}
+	}
+	&__right {
+		position: relative;
+		width: calc(100% - 55px);
+		@include flex(center);
+	}
+	&__input {
+		width: 100%;
+		min-height: 50px;
+		padding: 5px 90px 5px 15px;
+		border-radius: 5px;
+		outline: none;
+		border: 1px solid $greyd;
+	}
+	&__action {
+		position: absolute;
+		right: 10px;
+		@include row(-5px);
+	}
+	&__action__item {
+		@include column(initial, 0px);
+		margin-inline: 5px;
+		width: 30px;
+		height: 30px;
+		border-radius: 5px;
+		transition: 0.5s;
+		@include flex(center, center);
+		cursor: pointer;
+
+		&:not(.add):hover {
+			transition: 0.5s;
+			filter: brightness(0.92);
+			transform: translateY(-1px);
+		}
+
+		svg {
+			height: 20px;
+		}
+		svg path {
+			stroke: $greyf;
+		}
+
+		&.add {
+			cursor: initial;
+		}
+	}
+
+	&:not(.done) {
+		.task__action__item.undo {
+			display: none;
+		}
+	}
+	&.done {
+		.task__action__item.done {
+			display: none;
+		}
+		.task__input {
+			text-decoration: line-through;
+		}
+	}
+
+	&.red {
+		.task__tag__selected {
+			background-color: $red;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $red;
+		}
+	}
+	&.green {
+		.task__tag__selected {
+			background-color: $green;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $green;
+		}
+	}
+	&.blue {
+		.task__tag__selected {
+			background-color: $blue;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $blue;
+		}
+	}
+	&.yellow {
+		.task__tag__selected {
+			background-color: $yellow;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $yellow;
+		}
+	}
+	&.orange {
+		.task__tag__selected {
+			background-color: $orange;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $orange;
+		}
+	}
+	&.black {
+		.task__tag__selected {
+			background-color: $black;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $black;
+		}
+	}
+	&.white {
+		.task__tag__selected {
+			background-color: $white;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $white;
+		}
+	}
+	&.grey0 {
+		.task__tag__selected {
+			background-color: $grey0;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey0;
+		}
+	}
+	&.grey1 {
+		.task__tag__selected {
+			background-color: $grey1;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey1;
+		}
+	}
+	&.grey2 {
+		.task__tag__selected {
+			background-color: $grey2;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey2;
+		}
+	}
+	&.grey3 {
+		.task__tag__selected {
+			background-color: $grey3;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey3;
+		}
+	}
+	&.grey4 {
+		.task__tag__selected {
+			background-color: $grey4;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey4;
+		}
+	}
+	&.grey5 {
+		.task__tag__selected {
+			background-color: $grey5;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey5;
+		}
+	}
+	&.grey6 {
+		.task__tag__selected {
+			background-color: $grey6;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey6;
+		}
+	}
+	&.grey7 {
+		.task__tag__selected {
+			background-color: $grey7;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey7;
+		}
+	}
+	&.grey8 {
+		.task__tag__selected {
+			background-color: $grey8;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey8;
+		}
+	}
+	&.grey9 {
+		.task__tag__selected {
+			background-color: $grey9;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $grey9;
+		}
+	}
+	&.greya {
+		.task__tag__selected {
+			background-color: $greya;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $greya;
+		}
+	}
+	&.greyb {
+		.task__tag__selected {
+			background-color: $greyb;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $greyb;
+		}
+	}
+	&.greyc {
+		.task__tag__selected {
+			background-color: $greyc;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $greyc;
+		}
+	}
+	&.greyd {
+		.task__tag__selected {
+			background-color: $greyd;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $greyd;
+		}
+	}
+	&.greye {
+		.task__tag__selected {
+			background-color: $greye;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $greye;
+		}
+	}
+	&.greyf {
+		.task__tag__selected {
+			background-color: $greyf;
+		}
+		.task__input {
+			box-shadow: 3px 3px 0px $greyf;
+		}
+	}
+}
