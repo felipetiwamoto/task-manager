@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Task from "../component/Task/Task";
-import { Task as ITask } from "../component/Task/Task.interface";
+import { ITask } from "../component/Task/Task.interface";
 import shared from "../helper/shared";
 import taskAction from "../redux/action/task";
 
@@ -61,14 +61,16 @@ const Home = (props: any) => {
 	const getTasks = async () => {
 		const tasks: ITask[] = await fetch(`http://localhost:3000/tasks`).then((res) => res.json());
 
-		const undos = (tasks || [])
+		const undos: ITask[] = (tasks || [])
 			.filter((task: any) => !task.done)
 			.sort((a: any, b: any) => a.tag.length - b.tag.length);
-		const dones = (tasks || [])
+		const dones: ITask[] = (tasks || [])
 			.filter((task: any) => task.done)
 			.sort((a: any, b: any) => a.tag.length - b.tag.length);
 
-		dispatch(taskAction().set([...undos, ...dones]));
+		const sortedTasks: ITask[] = [...undos, ...dones];
+
+		dispatch(taskAction().set(sortedTasks));
 	};
 
 	return (

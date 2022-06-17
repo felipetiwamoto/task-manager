@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Task as ITask } from "./Task.interface";
+import { ITask } from "./Task.interface";
 import "./Task.scss";
 
 const Task = (props: { task: ITask, tags: string[], getTasks: Function}) => {

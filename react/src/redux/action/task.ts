@@ -1,5 +1,7 @@
+import { ITask } from "../../component/Task/Task.interface";
+
 export default function taskAction() {
 	return {
-		set: (payload: Array<any>) => ({ type: "SET_TASK", payload })
+		set: (payload: ITask[]) => ({ type: "SET_TASK", payload })
 	};
 }
